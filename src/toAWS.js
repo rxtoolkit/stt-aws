@@ -30,11 +30,11 @@ const toAWS = function toAWS({
   _deserializer = message => decodeMessage({message}),
   _getPresignedUrl = createAwsSignedUrl
 } = {}) {
-  if (!accessKeyId) return throwError(errors.missingCredentials());
-  if (!secretAccessKey) return throwError(errors.missingCredentials());
   // audio data should already be encoded as 16-bit PCM
   // with a sample rate of 16000 stored in a Buffer...
   return fileChunk$ => {
+    if (!accessKeyId) return throwError(errors.missingCredentials());
+    if (!secretAccessKey) return throwError(errors.missingCredentials());
     const url = _getPresignedUrl({
       region,
       accessKeyId,

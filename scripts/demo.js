@@ -16,10 +16,12 @@ const {toAWSTranscribe} = require('../dist/index.js');
 
 const trace = label => tap(data => console.log(label, data));
 
-const transcribe = ({inputFilePath}) => {
-  const audioChunk$ = fromFile({filePath: inputFilePath});
+const transcribe = params => {
+  const audioChunk$ = fromFile({filePath: params.inputFilePath});
+  console.log('auduioChunk', audioChunk$.pipe);
   const transcription$ = audioChunk$.pipe(
-    toAWSTranscribe()
+    tap(console.log),
+    toAWSTranscribe(params)
   );
   return transcription$;
 };
@@ -56,8 +58,10 @@ const outputWriter = filePath => message$ => {
   return outputWriter$;
 };
 
-function runDemo(...params) {
+function runDemo(...args) {
+  const params = args[0];
   console.log('Running transcription pipeline...');
+  console.log('params', params);
   const transcription$ = transcribe(params).pipe(share());
   transcription$.subscribe(
     out => console.log(JSON.stringify(out)),
@@ -83,9 +87,36 @@ const defaults = {
 program
   .command('run')
   .description('Runs transcription demo. Example: run')
-  .option('--input-file-path', 'Path to input audio file', defaults.inputFilePath)
-  .option('--write-output', 'write output to a file at the given path', defaults.outputPath)
-  .option('--output-path', 'Path of where to write output', defaults.outputPath)
+  .option(
+    '--input-file-path <inputFilePath>',
+    'Path to input audio file',
+    defaults.inputFilePath
+  )
+  .option(
+    '--write-output',
+    'write output to a file at the given path',
+    defaults.outputPath
+  )
+  .option(
+    '--output-path <outputPath>',
+    'Path of where to write output',
+    defaults.outputPath
+  )
+  .option(
+    '--region <region>',
+    'AWS region',
+    process.env.AWS_REGION || 'us-east-1'
+  )
+  .option(
+    '--access-key-id <accessKeyId>',
+    'AWS Access Key ID',
+    process.env.AWS_ACCESS_KEY_ID
+  )
+  .option(
+    '--secret-access-key <secretAccessKey>',
+    'AWS Secret access key',
+    process.env.AWS_SECRET_ACCESS_KEY
+  )
   .action(options => runDemo({...options}))
 
 program.parse(process.argv);
