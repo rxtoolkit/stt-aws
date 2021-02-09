@@ -18,7 +18,7 @@ yarn add @buccaneerai/stt-aws
 Stream audio speech data to AWS Transcribe via WebSocket and get transcripts back:
 ```js
 import {map} from 'rxjs/operators';
-import {toAWSTranscribe} from '@buccaneerai/stt-deepspeech';
+import {toAWSTranscribe} from '@buccaneerai/stt-aws';
 
 // The pipeline can take a stream of audio chunks encoded as 
 // LINEAR16 (PCM encoded as 16-bit integers) in the form of a Buffer
