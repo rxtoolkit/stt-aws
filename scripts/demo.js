@@ -16,10 +16,10 @@ const {toAWSTranscribe} = require('../dist/index.js');
 
 const trace = label => tap(data => console.log(label, data));
 
-const transcribe = ({inputFilePath, modelDir}) => {
+const transcribe = ({inputFilePath}) => {
   const audioChunk$ = fromFile({filePath: inputFilePath});
   const transcription$ = audioChunk$.pipe(
-    toAWSTranscribe({modelDir})
+    toAWSTranscribe()
   );
   return transcription$;
 };
@@ -57,7 +57,7 @@ const outputWriter = filePath => message$ => {
 };
 
 function runDemo(...params) {
-  console.log('Running DeepSpeech pipeline...');
+  console.log('Running transcription pipeline...');
   const transcription$ = transcribe(params).pipe(share());
   transcription$.subscribe(
     out => console.log(JSON.stringify(out)),
@@ -85,7 +85,7 @@ program
   .description('Runs transcription demo. Example: run')
   .option('--input-file-path', 'Path to input audio file', defaults.inputFilePath)
   .option('--write-output', 'write output to a file at the given path', defaults.outputPath)
-  .option('--output-path', 'Path of where to write output', outputPath)
+  .option('--output-path', 'Path of where to write output', defaults.outputPath)
   .action(options => runDemo({...options}))
 
 program.parse(process.argv);

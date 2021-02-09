@@ -1,7 +1,7 @@
 {
   "name": "@buccaneerai/stt-aws",
   "version": "2.0.0",
-  "description": "👂 RxJS operator for speech-to-text using AWS Transcribe",
+  "description": "👂 RxJS operator for realtime speech-to-text (STT/S2T) using AWS Transcribe",
   "main": "dist/index.js",
   "repository": "https://github.com/buccaneerai/stt-aws.git",
   "author": "Buccaneer LLC <opensource@buccaneer.ai>",
