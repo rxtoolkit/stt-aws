@@ -35,14 +35,19 @@ const toAWS = function toAWS({
   return fileChunk$ => {
     if (!accessKeyId) return throwError(errors.missingCredentials());
     if (!secretAccessKey) return throwError(errors.missingCredentials());
-    const url = _getPresignedUrl({
-      region,
-      accessKeyId,
-      secretAccessKey,
-      isMedical,
-      type,
-      specialty,
-    });
+    let url;
+    try {
+      url = _getPresignedUrl({
+        region,
+        accessKeyId,
+        secretAccessKey,
+        isMedical,
+        type,
+        specialty,
+      });
+    } catch (err) {
+      return throwError(err);
+    }
     const message$ = fileChunk$.pipe(
       shortenChunks(chunkSize), // AWS will reject chunks that are too large
       // stream chunks to AWS websocket server and receive responses
