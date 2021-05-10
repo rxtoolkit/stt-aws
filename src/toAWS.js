@@ -25,6 +25,7 @@ const toAWS = function toAWS({
   specialty = 'PRIMARYCARE', // medical specialty (for AWS Transcibe Medical)
   type = 'CONVERSATION', // vs 'DICTATION' (for AWS Transcribe Medical)
   chunkSize = 512,
+  useSpeakerLabels = true,
   _conduit = conduit,
   _serializer = audioBinary => convertAudioToBinaryMessage({audioBinary}),
   _deserializer = message => decodeMessage({message}),
@@ -44,6 +45,7 @@ const toAWS = function toAWS({
         isMedical,
         type,
         specialty,
+        useSpeakerLabels
       });
     } catch (err) {
       return throwError(err);

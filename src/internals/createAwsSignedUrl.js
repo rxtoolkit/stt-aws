@@ -131,6 +131,7 @@ const getAwsSignedUrl = function getAwsSignedUrl({
   secretAccessKey,
   languageCode = 'en-US',
   sampleRate = 16000,
+  useSpeakerLabels = true,
   _createAwsSignedUrl = createAwsSignedUrl,
   isMedical = false, // use AWS Transcibe Medical
   specialty = 'PRIMARYCARE', // for AWS Transcibe Medical
@@ -144,6 +145,7 @@ const getAwsSignedUrl = function getAwsSignedUrl({
   );
   let query = `language-code=${languageCode}&media-encoding=pcm&sample-rate=${sampleRate}`;
   if (isMedical) query += `&specialty=${specialty}&type=${type}`;
+  if (useSpeakerLabels) query += `&show-speaker-label=true`;
   const options = {
     region,
     query,
