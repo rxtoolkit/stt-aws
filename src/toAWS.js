@@ -5,7 +5,7 @@
 // https://docs.aws.amazon.com/transcribe/latest/dg/limits-guidelines.html
 import {of, throwError} from 'rxjs';
 import {map,takeUntil} from 'rxjs/operators';
-import {conduit} from '@bottlenose/rxws';
+import {conduit} from '@buccaneerai/rxjs-ws';
 
 import createAwsSignedUrl from './internals/createAwsSignedUrl';
 import convertAudioToBinaryMessage from './internals/convertAudioToAWSBinaryMessage';
