@@ -1,6 +1,6 @@
 {
   "name": "@buccaneerai/stt-aws",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "👂 RxJS operator for realtime speech-to-text (STT/S2T) using AWS Transcribe",
   "main": "dist/index.js",
   "repository": "https://github.com/buccaneerai/stt-aws.git",
@@ -42,7 +42,7 @@
   "dependencies": {
     "@aws-sdk/eventstream-marshaller": "^3.4.1",
     "@aws-sdk/util-utf8-node": "^3.4.1",
-    "@bottlenose/rxws": "^0.7.0",
+    "@buccaneerai/rxjs-ws": "^1.1.0",
     "lodash": "^4.17.20",
     "qs": "^6.10.1",
     "rxjs": "^6.6.3"

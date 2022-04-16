@@ -22,11 +22,12 @@ import {toAWSTranscribe} from '@buccaneerai/stt-aws';
 
 // The pipeline can take a stream of audio chunks encoded as 
 // LINEAR16 (PCM encoded as 16-bit integers) in the form of a Buffer
-const buffer$ = pcmChunkEncodedAs16BitIntegers$.pipe(
+const stt$ = pcmChunkEncodedAs16BitIntegers$.pipe(
   map(chunk => Buffer.from(chunk, 'base64')),
   toAWSTranscribe()
 );
-buffer$.subscribe(console.log); // log transcript output
+stt$.subscribe(console.log); // log transcript output
+stt$.error$.subscribe(console.error) // handle WebSocket errors
 ```
 
 > ⚠️ Pay attention to the endcoding of the audio data.  The operator only accepts PCM data encoded as 16-bit integers. For example, LINEAR16 encoding usually works.

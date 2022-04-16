@@ -53,17 +53,12 @@ const toAWS = function toAWS({
     const message$ = fileChunk$.pipe(
       shortenChunks(chunkSize), // AWS will reject chunks that are too large
       // stream chunks to AWS websocket server and receive responses
-      _conduit({url, serializer: _serializer, deserializer: _deserializer}),
-      // map(event => JSON.stringify(
-      //   event
-      //   && event.Transcript
-      //   && event.Transcript.Results
-      //   ? event.Transcript.Results
-      //   : {}
-      // )),
-      takeUntil(stop$)
+      _conduit({url, serializer: _serializer, deserializer: _deserializer})
     );
-    return message$;
+    const error$ = get(message$, 'error$');
+    let obs$ = message$.pipe(takeUntil(stop$));
+    obs$.error$ = error$;
+    return obs$;
   };
 };
 

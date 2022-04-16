@@ -117,6 +117,16 @@ program
     'AWS Secret access key',
     process.env.AWS_SECRET_ACCESS_KEY
   )
+  .option(
+    '-m, --is-medical',
+    'use AWS Transcribe Medical',
+    false
+  )
+  .option(
+    '--specialty',
+    'medical specialty (only for AWS Transcribe Medical)',
+    'PRIMARYCARE'
+  )
   .action(options => runDemo({...options}))
 
 program.parse(process.argv);
