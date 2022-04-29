@@ -3,6 +3,7 @@
 // https://cloud.google.com/speech-to-text/docs/encoding
 // https://docs.aws.amazon.com/transcribe/latest/dg/streaming.html
 // https://docs.aws.amazon.com/transcribe/latest/dg/limits-guidelines.html
+import get from 'lodash/get';
 import {of, throwError} from 'rxjs';
 import {map,takeUntil} from 'rxjs/operators';
 import {conduit} from '@buccaneerai/rxjs-ws';

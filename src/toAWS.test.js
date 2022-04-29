@@ -49,6 +49,7 @@ describe('operators.toAWS', () => {
       isMedical: false,
       specialty: 'PRIMARYCARE',
       type: 'CONVERSATION',
+      useSpeakerLabels: true,
     });
     // expect(params._convertAudioToBinaryMessage.callCount).to.equal(3);
     // expect(params._convertAudioToBinaryMessage.getCall(2).args[0]).to.deep.equal(Buffer.from('lastfoobar', 'base64'))
