@@ -21,6 +21,7 @@ const toAWS = function toAWS({
   region = (process.env.AWS_REGION || 'us-east-1'),
   accessKeyId = process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY,
+  sessionToken = null,
   stop$ = of(),
   isMedical = false, // use AWS Transcibe Medical vs AWS Transcribe (normal)
   specialty = 'PRIMARYCARE', // medical specialty (for AWS Transcibe Medical)
@@ -43,6 +44,7 @@ const toAWS = function toAWS({
         region,
         accessKeyId,
         secretAccessKey,
+        sessionToken,
         isMedical,
         type,
         specialty,

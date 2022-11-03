@@ -129,6 +129,7 @@ const getAwsSignedUrl = function getAwsSignedUrl({
   region,
   accessKeyId,
   secretAccessKey,
+  sessionToken,
   languageCode = 'en-US',
   sampleRate = 16000,
   useSpeakerLabels = true,
@@ -149,6 +150,7 @@ const getAwsSignedUrl = function getAwsSignedUrl({
   const options = {
     region,
     query,
+    sessionToken,
     key: accessKeyId,
     secret: secretAccessKey,
     protocol: 'wss',
