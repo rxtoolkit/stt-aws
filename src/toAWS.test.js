@@ -46,6 +46,7 @@ describe('operators.toAWS', () => {
       region: 'us-east-1',
       accessKeyId: params.accessKeyId,
       secretAccessKey: params.secretAccessKey,
+      sessionToken: undefined,
       isMedical: false,
       specialty: 'PRIMARYCARE',
       type: 'CONVERSATION',
