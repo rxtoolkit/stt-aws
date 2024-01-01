@@ -2,6 +2,10 @@
 > 👂 An RxJS operator for real-time speech-to-text (STT/S2T) streaming using the AWS Transcribe.
 
 ```bash
+npm i @rxtk/stt-aws
+```
+
+```bash
 yarn add @rxtk/stt-aws
 ```
 
