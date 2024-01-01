@@ -1,16 +1,13 @@
 {
-  "name": "@buccaneerai/stt-aws",
+  "name": "@rxtk/stt-aws",
   "version": "2.3.0",
   "description": "👂 RxJS operator for realtime speech-to-text (STT/S2T) using AWS Transcribe",
   "main": "dist/index.js",
-  "repository": "https://github.com/buccaneerai/stt-aws.git",
+  "repository": "https://github.com/rxtoolkit/stt-aws.git",
   "author": "Buccaneer LLC <opensource@buccaneer.ai>",
-  "license": "UNLICENSED",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/buccaneerai/stt-aws/issues"
+    "url": "https://github.com/rxtoolkit/stt-aws/issues"
   },
   "keywords": [
     "speech-to-text",
@@ -42,7 +39,7 @@
   "dependencies": {
     "@aws-sdk/eventstream-marshaller": "^3.4.1",
     "@aws-sdk/util-utf8-node": "^3.4.1",
-    "@buccaneerai/rxjs-ws": "^1.1.0",
+    "@rxtk/ws": "^1.1.1",
     "lodash": "^4.17.20",
     "qs": "^6.10.1",
     "rxjs": "^6.6.3"

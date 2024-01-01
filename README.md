@@ -1,11 +1,8 @@
-# @buccaneerai/stt-aws
+# @rxtk/stt-aws
 > 👂 An RxJS operator for real-time speech-to-text (STT/S2T) streaming using the AWS Transcribe.
 
-## Installation
-This is a private package. It requires setting up access in your npm config.
-
 ```bash
-yarn add @buccaneerai/stt-aws
+yarn add @rxtk/stt-aws
 ```
 
 ⚠️ To run the AWS Transcribe pipeline, you'll need a valid ACCESS_KEY_ID and SECRET_ACCESS_KEY with permissions to run AWS Transcribe. You'll need to set these in the environment or else it will probably not work.  Unfortunately, this module does not auto-detect AWS credentials stored in `~/.aws`.
@@ -18,7 +15,7 @@ yarn add @buccaneerai/stt-aws
 Stream audio speech data to AWS Transcribe via WebSocket and get transcripts back:
 ```js
 import {map} from 'rxjs/operators';
-import {toAWSTranscribe} from '@buccaneerai/stt-aws';
+import {toAWSTranscribe} from '@rxtk/stt-aws';
 
 // The pipeline can take a stream of audio chunks encoded as 
 // LINEAR16 (PCM encoded as 16-bit integers) in the form of a Buffer

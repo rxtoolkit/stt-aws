@@ -6,7 +6,7 @@
 import get from 'lodash/get';
 import {of, throwError} from 'rxjs';
 import {map,takeUntil} from 'rxjs/operators';
-import {conduit} from '@buccaneerai/rxjs-ws';
+import {conduit} from '@rxtk/ws';
 
 import createAwsSignedUrl from './internals/createAwsSignedUrl';
 import convertAudioToBinaryMessage from './internals/convertAudioToAWSBinaryMessage';
