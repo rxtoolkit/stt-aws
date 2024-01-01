@@ -1,6 +1,6 @@
 {
   "name": "@rxtk/stt-aws",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "👂 RxJS operator for realtime speech-to-text (STT/S2T) using AWS Transcribe",
   "main": "dist/index.js",
   "repository": "https://github.com/rxtoolkit/stt-aws.git",
